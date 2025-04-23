@@ -6,9 +6,9 @@
 
 - Merge UV channels by materials or by loose parts
 - Automatically selects the best UV map based on scoring
-- Removes redundant UV channels
-- Allows protecting specific UV layers from deletion
-- Reorders UV maps — manage layer positions which Blender does not support natively
+- Deletes bad UV maps
+- Lets you exclude specific UV maps from deletion
+- Change UV map position
 - Includes a user panel in the 3D Viewport (UV Tools tab)
 
 ## Installation
