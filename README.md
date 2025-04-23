@@ -38,7 +38,7 @@ Free for indie developers and small teams with yearly revenue under $100,000.
 Commercial or studio use requires a license.  
 Please contact the author directly for licensing details:
 
-**Contact:** your-email@example.com
+**Contact:** bogdanfrolov04@gmail.com
 
 See full terms in: [LICENSE](LICENSE)
 
@@ -46,8 +46,6 @@ See full terms in: [LICENSE](LICENSE)
 
 If this addon saves you time or frustration, consider supporting further development:
 
-[Buy Me a Coffee](https://www.buymeacoffee.com/yourname)  
-or  
-[PayPal](https://paypal.me/yourname)
+[Buy Me a Coffee]([https://www.buymeacoffee.com/yourname](https://buymeacoffee.com/naughtymonk))  or  [PayPal](https://paypal.me/bogdanfrolov04@gmail.com)
 
-Thank you for your support.
+Thank you for your support!
