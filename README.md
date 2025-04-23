@@ -18,7 +18,7 @@
 3. Select the script file and enable the addon
 
 ## How to Use
-![UV Merge Demo](.gif/uv_map_position.gif)
+![UV Map Position](.gif/uv_merge.gif)
 1. In the 3D Viewport, open the right-hand sidebar
 2. Go to the **UV Tools** tab
 3. Use **Clean by Materials** or **Clean by Loose Parts** depending on your workflow
@@ -29,6 +29,7 @@
 
 **UV Map Reordering:**
 Use the **UV Map Order** panel to move UV layers up or down. Blender doesn’t provide a native way to reorder them — this tool fills that gap by rebuilding the stack manually.
+![UV Map Position](.gif/uv_map_position.gif)
 
 ## License
 
