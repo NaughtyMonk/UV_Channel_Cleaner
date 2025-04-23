@@ -46,6 +46,6 @@ See full terms in: [LICENSE](LICENSE.txt)
 
 If this addon saves you time or frustration, consider supporting further development:
 
-[Buy Me a Coffee]([https://www.buymeacoffee.com/yourname](https://buymeacoffee.com/naughtymonk))  or  [PayPal](https://paypal.me/bogdanfrolov04@gmail.com)
+[Buy Me a Coffee]([https://www.buymeacoffee.com/naughtymonk])  or  [PayPal](https://paypal.me/bogdanfrolov04@gmail.com)
 
 Thank you for your support!
