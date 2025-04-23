@@ -1,0 +1,21 @@
+Custom License for UV Channel Cleaner
+--------------------------------------
+
+This software is free to use for individual developers and indie creators.
+
+For commercial use in studios, companies, a commercial license is required. 
+Please contact the author for licensing details.
+
+You are allowed to:
+- Use, modify, and distribute this add-on for non-commercial purposes
+- Include it in personal or educational Blender projects
+- Share the code with attribution
+
+You are NOT allowed to:
+- Use this add-on in commercial products or services without a proper license
+- Sell or redistribute this add-on under a different name
+- Remove or alter this license information
+
+Contact: bogdanfrolov04@gmail.com
+
+Copyright (c) 2025 NaughtyMonk
