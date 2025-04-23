@@ -40,7 +40,7 @@ Please contact the author directly for licensing details:
 
 **Contact:** bogdanfrolov04@gmail.com
 
-See full terms in: [LICENSE](LICENSE)
+See full terms in: [LICENSE](LICENSE.txt)
 
 ## Support the Project
 
