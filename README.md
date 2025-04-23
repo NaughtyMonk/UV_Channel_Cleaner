@@ -18,7 +18,7 @@
 3. Select the script file and enable the addon
 
 ## How to Use
-![UV Merge Demo](.gif/uv_merge_demo.gif)
+![UV Merge Demo](.gif/uv_map_position.gif)
 1. In the 3D Viewport, open the right-hand sidebar
 2. Go to the **UV Tools** tab
 3. Use **Clean by Materials** or **Clean by Loose Parts** depending on your workflow
