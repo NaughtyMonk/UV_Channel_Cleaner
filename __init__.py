@@ -150,29 +150,29 @@ class UV_OT_CleanByLooseParts(bpy.types.Operator):
 from mathutils import geometry
 
 # === Реальное пересечение UV треугольников ===
-def get_uv_triangles(bm, uv_layer):
-    tris = []
-    for face in bm.faces:
-        uvs = [loop[uv_layer].uv.copy() for loop in face.loops]
-        if len(uvs) < 3:
-            continue
-        # Триангуляция N-угольников (на случай не-треугольных)
-        for i in range(1, len(uvs) - 1):
-            tris.append((uvs[0], uvs[i], uvs[i + 1]))
-    return tris
+#def get_uv_triangles(bm, uv_layer):
+#    tris = []
+#    for face in bm.faces:
+#        uvs = [loop[uv_layer].uv.copy() for loop in face.loops]
+#        if len(uvs) < 3:
+#            continue
+#        # Триангуляция N-угольников (на случай не-треугольных)
+#        for i in range(1, len(uvs) - 1):
+#            tris.append((uvs[0], uvs[i], uvs[i + 1]))
+#    return tris
 
-def count_uv_triangle_overlaps(tris):
-    overlaps = 0
-    for i in range(len(tris)):
-        for j in range(i + 1, len(tris)):
-            a1, a2, a3 = tris[i]
-            b1, b2, b3 = tris[j]
-            try:
-                if geometry.intersect_tri_tri_2d(a1, a2, a3, b1, b2, b3):
-                    overlaps += 1
-            except:
-                continue
-    return overlaps
+#def count_uv_triangle_overlaps(tris):
+#    overlaps = 0
+#    for i in range(len(tris)):
+#        for j in range(i + 1, len(tris)):
+#            a1, a2, a3 = tris[i]
+#            b1, b2, b3 = tris[j]
+#            try:
+#                if geometry.intersect_tri_tri_2d(a1, a2, a3, b1, b2, b3):
+#                    overlaps += 1
+#            except:
+#                continue
+#    return overlaps
 
 
 def clean_uv_channels(obj, final_uv_name, keep_uvs):
@@ -181,6 +181,17 @@ def clean_uv_channels(obj, final_uv_name, keep_uvs):
     if not uv_layers:
         return "No UV layers found."
 
+    # 1. Переименовываем все UV кроме исключений
+    temp_uv_names = {}
+    temp_index = 0
+    for uv in uv_layers:
+        if uv.name not in keep_uvs:
+            new_name = f"UV_TEMP_{temp_index}"
+            temp_uv_names[new_name] = uv.name
+            uv.name = new_name
+            temp_index += 1
+
+    # 2. Выбираем лучший UV
     best_score = float('inf')
     best_uv_name = None
 
@@ -192,15 +203,18 @@ def clean_uv_channels(obj, final_uv_name, keep_uvs):
             best_score = score
             best_uv_name = uv.name
 
+    # 3. Если лучший найден, переименовываем его
     if best_uv_name and best_uv_name != final_uv_name:
         uv_layers[best_uv_name].name = final_uv_name
 
+    # 4. Удаляем остальные UV, кроме финального и исключений
     keep_names = [final_uv_name] + keep_uvs
     to_remove = [uv.name for uv in uv_layers if uv.name not in keep_names]
     for name in to_remove:
-        uv_layers.remove(uv_layers[name])
+        uv_layers.remove(uv_layers.get(name))
 
     return f"Kept: {final_uv_name}, removed: {', '.join(to_remove)}"
+
 
 # === SCORING ===
 def calc_uv_score(obj, uv_name):
@@ -266,10 +280,10 @@ def calc_uv_score(obj, uv_name):
     # Подсчёт островов
     island_count = count_uv_islands(obj, uv_name)
 
-    # Подсчёт пересечений UV треугольников
-    tris = get_uv_triangles(bm, uv_layer)
-    real_overlap_count = count_uv_triangle_overlaps(tris)
-    real_overlap_penalty = real_overlap_count * 0.2  # коэффициент можно подправить
+#    # Подсчёт пересечений UV треугольников
+#    tris = get_uv_triangles(bm, uv_layer)
+#    real_overlap_count = count_uv_triangle_overlaps(tris)
+#    real_overlap_penalty = real_overlap_count * 0.2  # коэффициент можно подправить
 
     bm.free()
 
@@ -316,8 +330,7 @@ def calc_uv_score(obj, uv_name):
         angle_score * 15 +
         island_penalty +
         overlap_penalty +
-        uv_aspect_penalty + 
-        real_overlap_penalty
+        uv_aspect_penalty 
     )
 
     print(f"[{obj.name}] UV '{uv_name}'")
